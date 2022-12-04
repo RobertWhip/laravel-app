@@ -21,11 +21,8 @@ class UnregisterCommand extends Command
         $telegramUser = $telegramUpdate->getMessage()->from;
 
         try {
-
-            // Chat::unregisterChat($telegramChat->id);
             ChatParticipant::unregisterMember($telegramUser->id);
-
-            $this->replyWithMessage(['text' => 'Done']);
+            $this->replyWithMessage(['text' => 'Unregistered']);
         } catch (\Exception $exception) {
             $this->replyWithMessage(['text' => "Error: {$exception->getMessage()}"]);
         }

@@ -17,29 +17,27 @@ class RegisterCommand extends Command
     public function handle()
     {
         try {
-            $update = $this->getWebhookUpdates();
+            $update = $this->getUpdate();
             $telegramChat = $telegramUpdate->getChat();
-            /* $telegramUser = $telegramUpdate->getMessage()->from;
+            $telegramUser = $telegramUpdate->getMessage()->from;
 
-            $chat_id = $update->getMessage()->getChat()->getId();
-            $text= $update->getMessage()->getTex t(); */
-
-            /* $chat = Chat::query()
+            $chat = Chat::query()
                 ->where('chat_id', '=', $telegramChat->id)
                 ->get()
                 ->first();
 
+            // in case the chat is not added to DB yet
             if(!$chat)
                 Chat::registerChat($telegramChat->id);
 
-                ChatParticipant::registerMember(
-                    $telegramUser->id,
-                    $telegramUser->firstName,
-                    $telegramUser->lastName,
-                    $telegramChat->id
+            ChatParticipant::registerMember(
+                $telegramUser->id,
+                $telegramUser->firstName,
+                $telegramUser->lastName,
+                $telegramChat->id
             );
- */
-            $this->replyWithMessage(['text' => 'Done {$telegramChat}']);
+
+            $this->replyWithMessage(['text' => 'Registered {$telegramUser->firstName}']);
         } catch (\Exception $exception) {
             $this->replyWithMessage(['text' => "Error: {$exception->getMessage()}"]);
         }

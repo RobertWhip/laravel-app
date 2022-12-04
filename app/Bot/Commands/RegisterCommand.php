@@ -16,12 +16,12 @@ class RegisterCommand extends Command
 
     public function handle()
     {
-        $telegramUpdate = $this->getUpdate();
+        /* $telegramUpdate = $this->getUpdate();
         $telegramChat = $telegramUpdate->getChat();
-        $telegramUser = $telegramUpdate->getMessage()->from;
+        $telegramUser = $telegramUpdate->getMessage()->from; */
 
         try {
-            $chat = Chat::query()
+            /* $chat = Chat::query()
                 ->where('chat_id', '=', $telegramChat->id)
                 ->get()
                 ->first();
@@ -35,7 +35,7 @@ class RegisterCommand extends Command
                     $telegramUser->lastName,
                     $telegramChat->id
             );
-
+ */
             $this->replyWithMessage(['text' => 'Done']);
         } catch (\Exception $exception) {
             $this->replyWithMessage(['text' => "Error: {$exception->getMessage()}"]);

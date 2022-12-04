@@ -22,7 +22,7 @@ class RegisterCommand extends Command
             /* $telegramUser = $telegramUpdate->getMessage()->from;
 
             $chat_id = $update->getMessage()->getChat()->getId();
-            $text= $update->getMessage()->getTex */t();
+            $text= $update->getMessage()->getTex t(); */
 
             /* $chat = Chat::query()
                 ->where('chat_id', '=', $telegramChat->id)

@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Telegram\Bot\Laravel\Facades\Telegram;
+
+$response = Telegram::getMe();
+$botId = $response->getId();
+$firstName = $response->getFirstName();
+$username = $response->getUsername();
+echo $botId . '<br />' . $firstName . '<br />' . $username;
 
 class User extends Authenticatable
 {
